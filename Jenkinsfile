@@ -53,7 +53,7 @@ pipeline {
                 }
             }
         }
-        stage('Trigger CD Pipeline') {
+        stage('Trigger CD Pipeline') {  // this stage isin CD_Pipeline
             steps {
                 build job: "CD_Pipeline", wait: true
             }
