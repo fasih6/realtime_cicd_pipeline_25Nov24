@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/fasih6/Ekart.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/<username>/Ekart.git'
             }
         }
         stage('Compile') {
@@ -24,8 +24,8 @@ pipeline {
         stage('Sonarqube Analysis') {
             steps {
                  sh '''
-                        ${SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url=http://52.207.225.101:9000/ \
-                        -Dsonar.login=squ_0942c063933dc8a5120efb2c1cc944eb4560dbeb \
+                        ${SCANNER_HOME}/bin/sonar-scanner -Dsonar.host.url=http://<sonarqube-ip>:9000/ \
+                        -Dsonar.login=<sonarqube-token> \
                         -Dsonar.projectName=Ekart -Dsonar.java.binaries=. -Dsonar.projectKey=Ekart
                         
                     '''
